@@ -39,7 +39,7 @@ import java.util.Set;
 import java.util.TimeZone;
 
 /**
- * Class AmazonDynamoDBAuthConnector which helps to generate authentication signature for Amazon SNS WSO2 ESB
+ * Class AmazonDynamoDBAuthConnector which helps to generate authentication signature for Amazon DynamoDB WSO2 ESB
  * Connector.
  */
 
@@ -50,7 +50,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @param messageContext ESB messageContext.
 	 */
 	public final void connect(final MessageContext messageContext) {
-
 		final StringBuilder canonicalRequest = new StringBuilder();
 		final StringBuilder stringToSign = new StringBuilder();
 		final StringBuilder payloadStrBuilder = new StringBuilder();
@@ -77,7 +76,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 			canonicalRequest.append(AmazonDynamoDBConstants.NEW_LINE);
 
 			for (Map.Entry<String, String> entry : parametersMap.entrySet()) {
-
 				payloadStrBuilder.append('"');
 				payloadStrBuilder.append(entry.getKey());
 				payloadStrBuilder.append('"');
@@ -114,7 +112,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 
 			final Set<String> keysSet = headersMap.keySet();
 			for (String key : keysSet) {
-
 				canonicalHeaders.append(key);
 				canonicalHeaders.append(AmazonDynamoDBConstants.COLON);
 				canonicalHeaders.append(headersMap.get(key));
@@ -137,7 +134,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 
 			String requestPayload = "";
 			if (payloadStrBuilder.length() > 0) {
-
 				requestPayload = "{" + payloadStrBuilder.substring(0, payloadStrBuilder.length() - 1) + "}";
 			} else {
 				requestPayload = "{}";
@@ -214,7 +210,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @return list of parameter key value.
 	 */
 	private String[] getParameterKeys() {
-
 		return new String[] { AmazonDynamoDBConstants.REQUEST_ITEMS, AmazonDynamoDBConstants.RETURN_CONSUMED_CAPACITY,
 		                      AmazonDynamoDBConstants.ATTRIBUTE_DEFINITIONS, AmazonDynamoDBConstants.TABLE_NAME,
 		                      AmazonDynamoDBConstants.KEY_SCHEMA, AmazonDynamoDBConstants.LOCAL_SECONDARY_INDEXES,
@@ -246,7 +241,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @return list of parameter key value.
 	 */
 	private String[] getHeaderKeys() {
-
 		return new String[] { AmazonDynamoDBConstants.HOST, AmazonDynamoDBConstants.CONTENT_TYPE,
 		                      AmazonDynamoDBConstants.AMZ_DATE };
 	}
@@ -282,7 +276,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 */
 	private Map<String, String> getSortedHeadersMap(final MessageContext messageContext,
 	                                                final Map<String, String> namesMap) {
-
 		final String[] headerKeys = getHeaderKeys();
 		final Map<String, String> parametersMap = new TreeMap<String, String>();
 		// Stores sorted, single valued API parameters
@@ -302,7 +295,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @return generated map.
 	 */
 	private Map<String, String> getParameterNamesMap() {
-
 		final Map<String, String> map = new HashMap<String, String>();
 		map.put(AmazonDynamoDBConstants.TARGET, AmazonDynamoDBConstants.API_TARGET);
 		map.put(AmazonDynamoDBConstants.SIGNATURE_METHOD, AmazonDynamoDBConstants.API_SIGNATURE_METHOD);
@@ -368,7 +360,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @param errorCode errorCode mapped to the exception
 	 */
 	private void storeErrorResponseStatus(final MessageContext ctxt, final Throwable throwable, final int errorCode) {
-
 		ctxt.setProperty(SynapseConstants.ERROR_CODE, errorCode);
 		ctxt.setProperty(SynapseConstants.ERROR_MESSAGE, throwable.getMessage());
 		ctxt.setFaultResponse(true);
@@ -383,7 +374,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @param errorCode errorCode mapped to the exception
 	 */
 	private void storeErrorResponseStatus(final MessageContext ctxt, final String message, final int errorCode) {
-
 		ctxt.setProperty(SynapseConstants.ERROR_CODE, errorCode);
 		ctxt.setProperty(SynapseConstants.ERROR_MESSAGE, message);
 		ctxt.setFaultResponse(true);
@@ -397,7 +387,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @return SHA-256 hashed text
 	 */
 	private byte[] hash(final MessageContext messageContext, final String text) {
-
 		MessageDigest messageDigest = null;
 		try {
 			messageDigest = MessageDigest.getInstance(AmazonDynamoDBConstants.SHA_256);
@@ -425,7 +414,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 * @return hex encoded String of the given byte array
 	 */
 	private static String bytesToHex(final byte[] bytes) {
-
 		final char[] hexArray = AmazonDynamoDBConstants.HEX_ARRAY_STRING.toCharArray();
 		char[] hexChars = new char[bytes.length * 2];
 
@@ -450,7 +438,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 */
 	private static byte[] hmacSHA256(final byte[] key, final String data)
 			throws NoSuchAlgorithmException, InvalidKeyException, IllegalStateException, UnsupportedEncodingException {
-
 		final String algorithm = AmazonDynamoDBConstants.HAMC_SHA_256;
 		final Mac mac = Mac.getInstance(algorithm);
 		mac.init(new SecretKeySpec(key, algorithm));
@@ -474,7 +461,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	private static byte[] getSignatureKey(final MessageContext ctx, final String key, final String dateStamp,
 	                                      final String regionName, final String serviceName)
 			throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, IllegalStateException {
-
 		final byte[] kSecret = (AmazonDynamoDBConstants.AWS4 + key).getBytes(AmazonDynamoDBConstants.UTF8);
 		final byte[] kDate = hmacSHA256(kSecret, dateStamp);
 		final byte[] kRegion = hmacSHA256(kDate, regionName);
