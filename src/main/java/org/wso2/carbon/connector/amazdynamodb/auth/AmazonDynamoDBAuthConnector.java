@@ -254,7 +254,6 @@ public class AmazonDynamoDBAuthConnector extends AbstractConnector {
 	 */
 	private Map<String, String> getSortedParametersMap(final MessageContext messageContext,
 	                                                   final Map<String, String> namesMap) {
-
 		final String[] singleValuedKeys = getParameterKeys();
 		final Map<String, String> parametersMap = new TreeMap<String, String>();
 		// Stores sorted, single valued API parameters
