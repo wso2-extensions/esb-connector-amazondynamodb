@@ -30,7 +30,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegrationTestBase {
-
 	private Map<String, String> esbRequestHeadersMap = new HashMap<String, String>();
 	private static int SLEEP_TIME;
 
@@ -65,7 +64,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getJSONObject("TableDescription").getString("TableName"),
 		                    connectorProperties.getProperty("tableName"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("TableArn"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -89,7 +87,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		                    connectorProperties.getProperty("tableNameOpt"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("LocalSecondaryIndexes"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("TableArn"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -120,7 +117,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {updateTable} integration test with mandatory parameters.")
 	public void testUpdateTableWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:updateTable");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -132,7 +128,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		                    connectorProperties.getProperty("tableName"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("TableArn"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("ProvisionedThroughput"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -163,14 +158,12 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {listTables} integration test with mandatory parameters.")
 	public void testListTablesWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:listTables");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "listTables_mandatory.json");
 
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("TableNames"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -184,14 +177,12 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {listTables} integration test with optional parameters.")
 	public void testListTablesWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:listTables");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "listTables_optional.json");
 
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("TableNames"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -205,7 +196,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {describeTable} integration test with mandatory parameters.")
 	public void testDescribeTableWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:describeTable");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -215,7 +205,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getJSONObject("Table").getString("TableName"),
 		                    connectorProperties.getProperty("tableName"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("TableArn"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -246,7 +235,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {putItem} integration test with mandatory parameters.")
 	public void testPutItemWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:putItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -266,7 +254,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {putItem} integration test with optional parameters.")
 	public void testPutItemWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:putItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -274,7 +261,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 
 		Assert.assertEquals(esbRestResponse.getBody().getJSONObject("ConsumedCapacity").getString("TableName"),
 		                    connectorProperties.getProperty("tableNameOpt"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -307,14 +293,12 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {getItem} integration test with mandatory parameters.")
 	public void testGetItemWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:getItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "getItem_mandatory.json");
 
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Item"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -329,7 +313,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {getItem} integration test with optional parameters.")
 	public void testGetItemWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:getItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -338,7 +321,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Item"));
 		Assert.assertEquals(esbRestResponse.getBody().getJSONObject("ConsumedCapacity").getString("TableName"),
 		                    connectorProperties.getProperty("tableNameOpt"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -357,7 +339,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "1 validation error detected: Value null at 'tableName' failed to satisfy constraint:" +
 		                    " Member must not be null");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 
@@ -372,14 +353,12 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {updateItem} integration test with optional parameters.")
 	public void testUpdateItemWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:updateItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "updateItem_optional.json");
 
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Attributes"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -398,7 +377,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "1 validation error detected: Value null at 'tableName' failed to satisfy constraint:" +
 		                    " Member must not be null");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 
@@ -414,14 +392,12 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {batchGetItem} integration test with mandatory parameters.")
 	public void testBatchGetItemWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:batchGetItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "batchGetItem_mandatory.json");
 
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Responses"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -437,14 +413,12 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {batchGetItem} integration test with optional parameters.")
 	public void testBatchGetItemWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:batchGetItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "batchGetItem_optional.json");
 
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Responses"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -463,7 +437,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "1 validation error detected: Value null at 'requestItems' failed to satisfy constraint:" +
 		                    " Member must not be null");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 
@@ -479,7 +452,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {query} integration test with optional parameters.")
 	public void testQueryWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:query");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -488,7 +460,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getJSONObject("ConsumedCapacity").getString("TableName"),
 		                    connectorProperties.getProperty("tableNameOpt"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Items"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -507,7 +478,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "1 validation error detected: Value null at 'tableName' failed to satisfy constraint:" +
 		                    " Member must not be null");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 
@@ -523,7 +493,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {scan} integration test with optional parameters.")
 	public void testScanWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:scan");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -532,7 +501,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getJSONObject("ConsumedCapacity").getString("TableName"),
 		                    connectorProperties.getProperty("tableNameOpt"));
 		Assert.assertTrue(esbRestResponse.getBody().toString().contains("Items"));
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -551,7 +519,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "1 validation error detected: Value null at 'tableName' failed to satisfy constraint:" +
 		                    " Member must not be null");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 
@@ -565,12 +532,11 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {deleteItem} integration test with mandatory parameters.")
 	public void testDeleteItemWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:deleteItem");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "deleteItem_mandatory.json");
-
+		
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 
@@ -589,7 +555,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "1 validation error detected: Value null at 'tableName' failed to satisfy constraint:" +
 		                    " Member must not be null");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 
@@ -603,7 +568,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 			description = "amazondynamodb {deleteTable} integration test with mandatory parameters.")
 	public void testDeleteTableWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:deleteTable");
-
 		Thread.sleep(SLEEP_TIME);
 
 		RestResponse<JSONObject> esbRestResponse =
@@ -626,7 +590,6 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 
 		Assert.assertEquals(esbRestResponse.getBody().getString("message"),
 		                    "The parameter 'TableName' is required but was not present in the request");
-
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
 	}
 }
