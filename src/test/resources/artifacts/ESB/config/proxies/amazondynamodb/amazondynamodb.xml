@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="amazondynamodb" startOnLoad="true" statistics="disable" trace="disable"
+       transports="https,http">
+    <target>
+        <inSequence>
+            <property expression="json-eval($.secretAccessKey)" name="secretAccessKey"/>
+            <property expression="json-eval($.accessKeyId)" name="accessKeyId"/>
+            <property expression="json-eval($.region)" name="region"/>
+            <property expression="json-eval($.requestItems)" name="requestItems"/>
+            <property expression="json-eval($.returnConsumedCapacity)"
+                      name="returnConsumedCapacity"/>
+            <property expression="json-eval($.attributeDefinitions)"
+                      name="attributeDefinitions"/>
+            <property expression="json-eval($.tableName)" name="tableName"/>
+            <property expression="json-eval($.keySchema)" name="keySchema"/>
+            <property expression="json-eval($.localSecondaryIndexes)"
+                      name="localSecondaryIndexes"/>
+            <property expression="json-eval($.provisionedThroughput)"
+                      name="provisionedThroughput"/>
+            <property expression="json-eval($.blocking)" name="blocking"/>
+            <property expression="json-eval($.item)" name="item"/>
+            <property expression="json-eval($.conditionalOperator)"
+                      name="conditionalOperator"/>
+            <property expression="json-eval($.conditionExpression)"
+                      name="conditionExpression"/>
+            <property expression="json-eval($.expected)" name="expected"/>
+            <property expression="json-eval($.expressionAttributeNames)"
+                      name="expressionAttributeNames"/>
+            <property expression="json-eval($.expressionAttributeValues)"
+                      name="expressionAttributeValues"/>
+            <property expression="json-eval($.returnItemCollectionMetrics)"
+                      name="returnItemCollectionMetrics"/>
+            <property expression="json-eval($.returnValues)" name="returnValues"/>
+            <property expression="json-eval($.key)" name="key"/>
+            <property expression="json-eval($.attributesToGet)" name="attributesToGet"/>
+            <property expression="json-eval($.consistentRead)" name="consistentRead"/>
+            <property expression="json-eval($.projectionExpression)"
+                      name="projectionExpression"/>
+            <property expression="json-eval($.exclusiveStartTableName)"
+                      name="exclusiveStartTableName"/>
+            <property expression="json-eval($.limit)" name="limit"/>
+            <property expression="json-eval($.attributeUpdates)" name="attributeUpdates"/>
+            <property expression="json-eval($.updateExpression)" name="updateExpression"/>
+            <property expression="json-eval($.globalSecondaryIndexUpdates)"
+                      name="globalSecondaryIndexUpdates"/>
+            <property expression="json-eval($.StreamSpecification)"
+                      name="StreamSpecification"/>
+            <property expression="json-eval($.exclusiveStartKey)" name="exclusiveStartKey"/>
+            <property expression="json-eval($.filterExpression)" name="filterExpression"/>
+            <property expression="json-eval($.indexName)" name="indexName"/>
+            <property expression="json-eval($.scanFilter)" name="scanFilter"/>
+            <property expression="json-eval($.segment)" name="segment"/>
+            <property expression="json-eval($.totalSegments)" name="totalSegments"/>
+            <property expression="json-eval($.select)" name="select"/>
+            <property expression="json-eval($.keyConditionExpression)"
+                      name="keyConditionExpression"/>
+            <property expression="json-eval($.keyConditions)" name="keyConditions"/>
+            <property expression="json-eval($.queryFilter)" name="queryFilter"/>
+            <property expression="json-eval($.scanIndexForward)" name="scanIndexForward"/>
+            <amazondynamodb.init>
+                <secretAccessKey>{$ctx:secretAccessKey}</secretAccessKey>
+                <accessKeyId>{$ctx:accessKeyId}</accessKeyId>
+                <region>{$ctx:region}</region>
+                <blocking>{$ctx:blocking}</blocking>
+            </amazondynamodb.init>
+            <switch source="get-property('transport', 'Action')">
+                <case regex="urn:batchGetItem">
+                    <amazondynamodb.batchGetItem>
+                        <requestItems>{$ctx:requestItems}</requestItems>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                    </amazondynamodb.batchGetItem>
+                </case>
+                <case regex="urn:createTable">
+                    <amazondynamodb.createTable>
+                        <attributeDefinitions>{$ctx:attributeDefinitions}</attributeDefinitions>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <keySchema>{$ctx:keySchema}</keySchema>
+                        <localSecondaryIndexes>{$ctx:localSecondaryIndexes}</localSecondaryIndexes>
+                        <provisionedThroughput>{$ctx:provisionedThroughput}</provisionedThroughput>
+                    </amazondynamodb.createTable>
+                </case>
+                <case regex="urn:putItem">
+                    <amazondynamodb.putItem>
+                        <item>{$ctx:item}</item>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <conditionalOperator>{$ctx:conditionalOperator}</conditionalOperator>
+                        <conditionExpression>{$ctx:conditionExpression}</conditionExpression>
+                        <expected>{$ctx:expected}</expected>
+                        <expressionAttributeNames>{$ctx:expressionAttributeNames}</expressionAttributeNames>
+                        <expressionAttributeValues>{$ctx:expressionAttributeValues}</expressionAttributeValues>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                        <returnItemCollectionMetrics>{$ctx:returnItemCollectionMetrics}</returnItemCollectionMetrics>
+                        <returnValues>{$ctx:returnValues}</returnValues>
+                    </amazondynamodb.putItem>
+                </case>
+                <case regex="urn:batchWriteItem">
+                    <amazondynamodb.batchWriteItem>
+                        <requestItems>{$ctx:requestItems}</requestItems>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                        <returnItemCollectionMetrics>{$ctx:returnItemCollectionMetrics}</returnItemCollectionMetrics>
+                    </amazondynamodb.batchWriteItem>
+                </case>
+                <case regex="urn:deleteItem">
+                    <amazondynamodb.deleteItem>
+                        <key>{$ctx:key}</key>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <conditionExpression>{$ctx:conditionExpression}</conditionExpression>
+                        <conditionalOperator>{$ctx:conditionalOperator}</conditionalOperator>
+                        <expected>{$ctx:expected}</expected>
+                        <expressionAttributeNames>{$ctx:expressionAttributeNames}</expressionAttributeNames>
+                        <expressionAttributeValues>{$ctx:expressionAttributeValues}</expressionAttributeValues>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                        <returnItemCollectionMetrics>{$ctx:returnItemCollectionMetrics}</returnItemCollectionMetrics>
+                        <returnValues>{$ctx:returnValues}</returnValues>
+                    </amazondynamodb.deleteItem>
+                </case>
+                <case regex="urn:deleteTable">
+                    <amazondynamodb.deleteTable>
+                        <tableName>{$ctx:tableName}</tableName>
+                    </amazondynamodb.deleteTable>
+                </case>
+                <case regex="urn:describeLimits">
+                    <amazondynamodb.describeLimits/>
+                </case>
+                <case regex="urn:describeTable">
+                    <amazondynamodb.describeTable>
+                        <tableName>{$ctx:tableName}</tableName>
+                    </amazondynamodb.describeTable>
+                </case>
+                <case regex="urn:getItem">
+                    <amazondynamodb.getItem>
+                        <key>{$ctx:key}</key>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <attributesToGet>{$ctx:attributesToGet}</attributesToGet>
+                        <consistentRead>{$ctx:consistentRead}</consistentRead>
+                        <expressionAttributeNames>{$ctx:expressionAttributeNames}</expressionAttributeNames>
+                        <projectionExpression>{$ctx:projectionExpression}</projectionExpression>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                    </amazondynamodb.getItem>
+                </case>
+                <case regex="urn:listTables">
+                    <amazondynamodb.listTables>
+                        <exclusiveStartTableName>{$ctx:exclusiveStartTableName}</exclusiveStartTableName>
+                        <limit>{$ctx:limit}</limit>
+                    </amazondynamodb.listTables>
+                </case>
+                <case regex="urn:updateItem">
+                    <amazondynamodb.updateItem>
+                        <key>{$ctx:key}</key>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <attributeUpdates>{$ctx:attributeUpdates}</attributeUpdates>
+                        <conditionalOperator>{$ctx:conditionalOperator}</conditionalOperator>
+                        <conditionExpression>{$ctx:conditionExpression}</conditionExpression>
+                        <expected>{$ctx:expected}</expected>
+                        <expressionAttributeNames>{$ctx:expressionAttributeNames}</expressionAttributeNames>
+                        <expressionAttributeValues>{$ctx:expressionAttributeValues}</expressionAttributeValues>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                        <returnItemCollectionMetrics>{$ctx:returnItemCollectionMetrics}</returnItemCollectionMetrics>
+                        <returnValues>{$ctx:returnValues}</returnValues>
+                        <updateExpression>{$ctx:updateExpression}</updateExpression>
+                    </amazondynamodb.updateItem>
+                </case>
+                <case regex="urn:updateTable">
+                    <amazondynamodb.updateTable>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <attributeDefinitions>{$ctx:attributeDefinitions}</attributeDefinitions>
+                        <globalSecondaryIndexUpdates>{$ctx:globalSecondaryIndexUpdates}</globalSecondaryIndexUpdates>
+                        <StreamSpecification>{$ctx:StreamSpecification}</StreamSpecification>
+                        <provisionedThroughput>{$ctx:provisionedThroughput}</provisionedThroughput>
+                    </amazondynamodb.updateTable>
+                </case>
+                <case regex="urn:scan">
+                    <amazondynamodb.scan>
+                        <attributesToGet>{$ctx:attributesToGet}</attributesToGet>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <conditionalOperator>{$ctx:conditionalOperator}</conditionalOperator>
+                        <consistentRead>{$ctx:consistentRead}</consistentRead>
+                        <exclusiveStartKey>{$ctx:exclusiveStartKey}</exclusiveStartKey>
+                        <expressionAttributeNames>{$ctx:expressionAttributeNames}</expressionAttributeNames>
+                        <expressionAttributeValues>{$ctx:expressionAttributeValues}</expressionAttributeValues>
+                        <filterExpression>{$ctx:filterExpression}</filterExpression>
+                        <indexName>{$ctx:indexName}</indexName>
+                        <limit>{$ctx:limit}</limit>
+                        <projectionExpression>{$ctx:projectionExpression}</projectionExpression>
+                        <scanFilter>{$ctx:scanFilter}</scanFilter>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                        <segment>{$ctx:segment}</segment>
+                        <totalSegments>{$ctx:totalSegments}</totalSegments>
+                        <select>{$ctx:select}</select>
+                    </amazondynamodb.scan>
+                </case>
+                <case regex="urn:query">
+                    <amazondynamodb.query>
+                        <attributesToGet>{$ctx:attributesToGet}</attributesToGet>
+                        <tableName>{$ctx:tableName}</tableName>
+                        <conditionalOperator>{$ctx:conditionalOperator}</conditionalOperator>
+                        <consistentRead>{$ctx:consistentRead}</consistentRead>
+                        <exclusiveStartKey>{$ctx:exclusiveStartKey}</exclusiveStartKey>
+                        <expressionAttributeNames>{$ctx:expressionAttributeNames}</expressionAttributeNames>
+                        <expressionAttributeValues>{$ctx:expressionAttributeValues}</expressionAttributeValues>
+                        <filterExpression>{$ctx:filterExpression}</filterExpression>
+                        <keyConditionExpression>{$ctx:keyConditionExpression}</keyConditionExpression>
+                        <keyConditions>{$ctx:keyConditions}</keyConditions>
+                        <indexName>{$ctx:indexName}</indexName>
+                        <limit>{$ctx:limit}</limit>
+                        <projectionExpression>{$ctx:projectionExpression}</projectionExpression>
+                        <queryFilter>{$ctx:queryFilter}</queryFilter>
+                        <returnConsumedCapacity>{$ctx:returnConsumedCapacity}</returnConsumedCapacity>
+                        <scanIndexForward>{$ctx:scanIndexForward}</scanIndexForward>
+                        <select>{$ctx:select}</select>
+                    </amazondynamodb.query>
+                </case>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

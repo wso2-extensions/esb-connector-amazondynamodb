@@ -1,0 +1,8 @@
+{
+  "accessKeyId": "%s(accessKeyId)",
+  "secretAccessKey": "%s(secretAccessKey)",
+  "region": "%s(region)",
+  "blocking": "%s(blocking)",
+  "item": %s(item),
+  "tableName": "%s(tableName)"
+}

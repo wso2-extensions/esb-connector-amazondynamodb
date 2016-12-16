@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<component name="amazondynamodb-item" type="synapse/template">
+    <subComponents>
+        <component name="batchGetItem">
+            <file>batchGetItem.xml</file>
+            <description>Get the attributes of one or more items from one or more tables.</description>
+        </component>
+        <component name="batchWriteItem">
+            <file>batchWriteItem.xml</file>
+            <description>Put or delete multiple items in one or more tables.</description>
+        </component>
+        <component name="putItem">
+            <file>putItem.xml</file>
+            <description>Create a new item, or replace an old item with a new item.</description>
+        </component>
+        <component name="deleteItem">
+            <file>deleteItem.xml</file>
+            <description>Delete a single item in a table by primary key.</description>
+        </component>
+        <component name="getItem">
+            <file>getItem.xml</file>
+            <description>Get a set of attributes.</description>
+        </component>
+        <component name="updateItem">
+            <file>updateItem.xml</file>
+            <description>Update an existing item's attributes.</description>
+        </component>
+        <component name="query">
+            <file>query.xml</file>
+            <description>Return all of the items from the table or index with that partition key value.</description>
+        </component>
+        <component name="scan">
+            <file>scan.xml</file>
+            <description>Returns one or more items and item attributes by accessing every item in a table or a secondary
+                index.
+            </description>
+        </component>
+    </subComponents>
+</component>

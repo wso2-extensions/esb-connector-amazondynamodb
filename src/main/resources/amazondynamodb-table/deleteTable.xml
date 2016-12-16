@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<template name="deleteTable" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="tableName" description="The name of the table to delete."/>
+    <sequence>
+        <property name="target" value="DynamoDB_20120810.DeleteTable"/>
+        <property name="tableName" expression="$func:tableName"/>
+        <class name="org.wso2.carbon.connector.amazdynamodb.auth.AmazonDynamoDBAuthConnector"/>
+        <!-- Add authorization and date header parameters -->
+        <header name="Authorization" scope="transport" expression="$ctx:authorizationHeader"/>
+        <header name="X-Amz-Date" scope="transport" expression="$ctx:amzDate"/>
+        <header name="X-Amz-Target" scope="transport" expression="$ctx:target"/>
+        <payloadFactory media-type="json">
+            <format>
+                $1
+            </format>
+            <args>
+                <arg expression="$ctx:requestPayload"/>
+            </args>
+        </payloadFactory>
+        <property name="messageType" value="application/x-amz-json-1.0" scope="axis2"/>
+        <filter source="$ctx:amazonDynamoDbBlocking" regex="true">
+            <then>
+                <call blocking="true">
+                    <endpoint>
+                        <http method="POST" uri-template="{uri.var.apiUrl}{+uri.var.httpRequestUri}"/>
+                    </endpoint>
+                </call>
+            </then>
+            <else>
+                <call>
+                    <endpoint>
+                        <http method="POST" uri-template="{uri.var.apiUrl}{+uri.var.httpRequestUri}"/>
+                    </endpoint>
+                </call>
+            </else>
+        </filter>
+        <!-- Remove custom header information in response -->
+        <header name="x-amzn-RequestId" scope="transport" action="remove"/>
+        <header name="Via" scope="transport" action="remove"/>
+    </sequence>
+</template>

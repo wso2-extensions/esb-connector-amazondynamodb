@@ -1,0 +1,12 @@
+{
+  "accessKeyId": "%s(accessKeyId)",
+  "secretAccessKey": "%s(secretAccessKey)",
+  "region": "%s(region)",
+  "blocking": "%s(blocking)",
+  "tableName": "%s(tableNameOpt)",
+  "projectionExpression": "%s(projectionExpression)",
+  "keyConditionExpression": "%s(keyConditionExpression)",
+  "expressionAttributeValues": %s(queryExpressionAttributeValues),
+  "indexName": "%s(indexName)",
+  "returnConsumedCapacity": "TOTAL"
+}
