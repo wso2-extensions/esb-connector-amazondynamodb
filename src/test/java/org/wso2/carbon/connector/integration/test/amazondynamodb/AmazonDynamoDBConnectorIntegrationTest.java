@@ -39,7 +39,7 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	@BeforeClass(alwaysRun = true)
 	public void setEnvironment() throws Exception {
 
-		init("amazondynamodb-connector-1.0.0");
+		init("amazondynamodb-connector-1.0.1-SNAPSHOT");
 
 		esbRequestHeadersMap.put("Content-Type", "application/x-amz-json-1.0");
 		SLEEP_TIME = Integer.parseInt(connectorProperties.getProperty("sleepTime"));
