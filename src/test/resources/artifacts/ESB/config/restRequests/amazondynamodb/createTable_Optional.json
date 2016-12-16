@@ -1,0 +1,11 @@
+{
+  "accessKeyId": "%s(accessKeyId)",
+  "secretAccessKey": "%s(secretAccessKey)",
+  "region": "%s(region)",
+  "blocking": "%s(blocking)",
+  "attributeDefinitions": %s(attributeDefinitionsOpt) ,
+  "tableName": "%s(tableNameOpt)",
+  "keySchema": %s(keySchema),
+  "localSecondaryIndexes": %s(localSecondaryIndexes),
+  "provisionedThroughput": %s(provisionedThroughput)
+}

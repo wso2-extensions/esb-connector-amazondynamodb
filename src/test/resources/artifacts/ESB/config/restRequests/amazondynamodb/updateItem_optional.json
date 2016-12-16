@@ -1,0 +1,12 @@
+{
+  "accessKeyId": "%s(accessKeyId)",
+  "secretAccessKey": "%s(secretAccessKey)",
+  "region": "%s(region)",
+  "blocking": "%s(blocking)",
+  "tableName": "%s(tableNameOpt)",
+  "key": %s(key),
+  "updateExpression": "%s(updateExpression)",
+  "conditionExpression": "%s(conditionExpression)",
+  "expressionAttributeValues": %s(expressionAttributeValues),
+  "returnValues": "ALL_NEW"
+}
