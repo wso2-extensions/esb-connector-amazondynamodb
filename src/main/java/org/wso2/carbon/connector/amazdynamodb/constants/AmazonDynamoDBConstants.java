@@ -19,7 +19,7 @@
 package org.wso2.carbon.connector.amazdynamodb.constants;
 
 /**
- * AmazonSNS contains required constants.
+ * AmazonDynamoDB contains required constants.
  */
 public class AmazonDynamoDBConstants {
 
