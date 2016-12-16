@@ -136,9 +136,7 @@
     <scm>
         <connection>scm:git:https://github.com/wso2-extensions/esb-connector-amazondynamodb.git</connection>
         <url>https://github.com/wso2-extensions/esb-connector-amazondynamodb.git</url>
-        <developerConnection>
-            scm:git:https://github.com/wso2-extensions/esb-connector-amazondynamodb
-        </developerConnection>
+        <developerConnection>scm:git:https://github.com/wso2-extensions/esb-connector-amazondynamodb</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <build>
