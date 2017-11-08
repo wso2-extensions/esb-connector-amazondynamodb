@@ -38,8 +38,9 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 */
 	@BeforeClass(alwaysRun = true)
 	public void setEnvironment() throws Exception {
-
-		init("amazondynamodb-connector-1.0.1-SNAPSHOT");
+		String connectorName = System.getProperty("connector_name") + "-connector-" +
+				System.getProperty("connector_version") + ".zip";
+		init(connectorName);
 
 		esbRequestHeadersMap.put("Content-Type", "application/x-amz-json-1.0");
 		SLEEP_TIME = Integer.parseInt(connectorProperties.getProperty("sleepTime"));
@@ -113,7 +114,8 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 * @throws JSONException
 	 * @throws IOException
 	 */
-	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters" },
+	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters",
+			"testCreateTableWithOptionalParameters"},
 			description = "amazondynamodb {updateTable} integration test with mandatory parameters.")
 	public void testUpdateTableWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:updateTable");
@@ -173,7 +175,8 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 * @throws JSONException
 	 * @throws IOException
 	 */
-	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters" },
+	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters",
+			"testCreateTableWithOptionalParameters"},
 			description = "amazondynamodb {listTables} integration test with optional parameters.")
 	public void testListTablesWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:listTables");
@@ -192,7 +195,8 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 * @throws JSONException
 	 * @throws IOException
 	 */
-	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters" },
+	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters",
+			"testCreateTableWithOptionalParameters" },
 			description = "amazondynamodb {describeTable} integration test with mandatory parameters.")
 	public void testDescribeTableWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:describeTable");
@@ -231,7 +235,8 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 * @throws JSONException
 	 * @throws IOException
 	 */
-	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters" },
+	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters",
+			"testCreateTableWithOptionalParameters" },
 			description = "amazondynamodb {putItem} integration test with mandatory parameters.")
 	public void testPutItemWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:putItem");
@@ -289,7 +294,7 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 * @throws IOException
 	 */
 	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters",
-	                                           "testPutItemWithMandatoryParameters" },
+			"testCreateTableWithOptionalParameters", "testPutItemWithMandatoryParameters" },
 			description = "amazondynamodb {getItem} integration test with mandatory parameters.")
 	public void testGetItemWithMandatoryParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:getItem");
@@ -308,8 +313,8 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 * @throws JSONException
 	 * @throws IOException
 	 */
-	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithOptionalParameters",
-	                                           "testPutItemWithOptionalParameters" },
+	@Test(groups = { "wso2.esb" }, dependsOnMethods = { "testCreateTableWithMandatoryParameters",
+			"testCreateTableWithOptionalParameters", "testPutItemWithOptionalParameters" },
 			description = "amazondynamodb {getItem} integration test with optional parameters.")
 	public void testGetItemWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 		esbRequestHeadersMap.put("Action", "urn:getItem");

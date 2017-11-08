@@ -8,12 +8,12 @@ Product: Integration tests for WSO2 ESB AmazonDynamoDB connector
 
     Tested Platforms: 
 
-    - Ubuntu 14.04
-    - WSO2 ESB 5.0.0
+    - MacOS 10.12.6
+    - WSO2 EI 6.1.1
 
 STEPS
 
- 1. Download ESB 5.0.0 from official website and extract the ESB and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh.
+ 1. Download EI 6.1.1 from official website.
 
  2. This ESB should be configured as below;
 	Please make sure that the below mentioned Axis configurations are enabled (repository/conf/axis2/axis2.xml).
@@ -21,7 +21,7 @@ STEPS
 	    <messageFormatter contentType="application/x-amz-json-1.0"  class="org.apache.synapse.commons.json.JsonStreamFormatter"/>
 	    <messageBuilder contentType="application/x-amz-json-1.0" 	class="org.apache.synapse.commons.json.JsonStreamBuilder"/>
 
- 3. Compress modified ESB and copy that zip file in to location "{AMAZONDYNAMODB_CONNECTOR_HOME}/repository/".
+ 3. Compress modified EI and copy that zip file in to location "{AMAZONDYNAMODB_CONNECTOR_HOME}/repository/".
 
  4. Prerequisites for AmazonDynamoDB Connector Integration Testing
 
@@ -56,7 +56,7 @@ STEPS
         xxiii)  filterExpression                -   A string that contains conditions that DynamoDB applies after the Query 							operation.
         xxiv)   scanExpressionAttributeValues   -   One or more values that can be substituted in an expression.
         
- Note: tableName and tableNameOpt need to be changed before running the integration test each time.
+ Note: tableName and tableNameOpt need to be changed before running the integration test each time. Also change the table name in requestItems according to the tableName.
        
  6. Navigate to "<AMAZONDYNAMODB_CONNECTOR_HOME>" and run the following command.
         $ mvn clean install
