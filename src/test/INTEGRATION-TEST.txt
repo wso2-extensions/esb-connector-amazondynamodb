@@ -2,9 +2,7 @@ Product: Integration tests for WSO2 ESB AmazonDynamoDB connector
     Pre-requisites:
 
     - Maven 3.x
-    - Java 1.6 or above
-    - The org.wso2.esb.integration.integration-base project is required. The test suite has been configured to download this  project automatically. If the automatic download fails, download the following project and compile it using the mvn 	clean install command to update your local repository:
-      https://github.com/wso2-extensions/esb-integration-base
+    - Java 1.8
 
     Tested Platforms: 
 
@@ -16,7 +14,7 @@ STEPS
  1. Download EI 6.1.1 from official website.
 
  2. This ESB should be configured as below;
-	Please make sure that the below mentioned Axis configurations are enabled (repository/conf/axis2/axis2.xml).
+	Please make sure that the below mentioned Axis configurations are enabled (conf/axis2/axis2.xml).
     
 	    <messageFormatter contentType="application/x-amz-json-1.0"  class="org.apache.synapse.commons.json.JsonStreamFormatter"/>
 	    <messageBuilder contentType="application/x-amz-json-1.0" 	class="org.apache.synapse.commons.json.JsonStreamBuilder"/>
