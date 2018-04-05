@@ -57,4 +57,4 @@ STEPS
  Note: tableName and tableNameOpt need to be changed before running the integration test each time. Also change the table name in requestItems according to the tableName.
        
  6. Navigate to "<AMAZONDYNAMODB_CONNECTOR_HOME>" and run the following command.
-        $ mvn clean install
+        $ mvn clean install -Dskip-tests=false
