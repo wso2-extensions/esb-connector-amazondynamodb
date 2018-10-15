@@ -38,9 +38,17 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 	 */
 	@BeforeClass(alwaysRun = true)
 	public void setEnvironment() throws Exception {
+
 		String connectorName = System.getProperty("connector_name") + "-connector-" +
 				System.getProperty("connector_version") + ".zip";
 		init(connectorName);
+		getApiConfigProperties();
+		String tableName = System.currentTimeMillis() + connectorProperties.getProperty("tableName");
+		String tableNameOpt = System.currentTimeMillis() + connectorProperties.getProperty("tableNameOpt");
+		connectorProperties.setProperty("tableName", tableName);
+		connectorProperties.setProperty("tableNameOpt", tableNameOpt);
+		connectorProperties.setProperty("requestItems", connectorProperties.getProperty("requestItems")
+				.replace("<tableName>", tableName));
 
 		esbRequestHeadersMap.put("Content-Type", "application/x-amz-json-1.0");
 		SLEEP_TIME = Integer.parseInt(connectorProperties.getProperty("sleepTime"));
@@ -541,7 +549,7 @@ public class AmazonDynamoDBConnectorIntegrationTest extends ConnectorIntegration
 
 		RestResponse<JSONObject> esbRestResponse =
 				sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "deleteItem_mandatory.json");
-		
+
 		Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 	}
 

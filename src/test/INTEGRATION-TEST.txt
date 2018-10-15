@@ -7,17 +7,17 @@ Product: Integration tests for WSO2 ESB AmazonDynamoDB connector
     Tested Platforms: 
 
     - MacOS 10.12.6
-    - WSO2 EI 6.1.1
+    - WSO2 EI 6.4.0
 
 STEPS
 
- 1. Download EI 6.1.1 from official website.
+ 1. Download EI 6.4.0 from official website.
 
- 2. This ESB should be configured as below;
-	Please make sure that the below mentioned Axis configurations are enabled (conf/axis2/axis2.xml).
-    
-	    <messageFormatter contentType="application/x-amz-json-1.0"  class="org.apache.synapse.commons.json.JsonStreamFormatter"/>
-	    <messageBuilder contentType="application/x-amz-json-1.0" 	class="org.apache.synapse.commons.json.JsonStreamBuilder"/>
+ 2. This EI should be configured as below; (If you are using the EI version other than 6.4.0)
+    	Please make sure that the below mentioned Axis configurations are enabled (repository/conf/axis2/axis2.xml).
+
+    	    <messageFormatter contentType="application/x-amz-json-1.0"  class="org.apache.synapse.commons.json.JsonStreamFormatter"/>
+    	    <messageBuilder contentType="application/x-amz-json-1.0" 	class="org.apache.synapse.commons.json.JsonStreamBuilder"/>
 
  3. Compress modified EI and copy that zip file in to location "{AMAZONDYNAMODB_CONNECTOR_HOME}/repository/".
 
@@ -27,7 +27,7 @@ STEPS
     a)  Create a fresh account in Amazon AWS and log on to http://aws.amazon.com/dynamodb/ with the web browser.
     b)  Save the AWSAccessKeyId and AWSSecretKey while continuing the registration process.
 
- 5. Update the AmazonDynamoDB properties file at location "{AMAZONDYNAMODB_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" as below.
+ 5. Update the AmazonDynamoDB properties file at location "{AMAZONDYNAMODB_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" and "{AMAZONDYNAMODB_CONNECTOR_HOME}/repository/esb-connector-amazondynamodb.properties" as below.
 
         i)      accessKeyId                     -   The accessKeyId of the user account to generate the signature.
         ii)     secretAccessKey                 -   The secret access key for the application generated from Amazon.
@@ -53,8 +53,6 @@ STEPS
         xxii)   queryExpressionAttributeValues  -   One or more values that can be substituted in an expression.
         xxiii)  filterExpression                -   A string that contains conditions that DynamoDB applies after the Query 							operation.
         xxiv)   scanExpressionAttributeValues   -   One or more values that can be substituted in an expression.
-        
- Note: tableName and tableNameOpt need to be changed before running the integration test each time. Also change the table name in requestItems according to the tableName.
-       
+
  6. Navigate to "<AMAZONDYNAMODB_CONNECTOR_HOME>" and run the following command.
         $ mvn clean install -Dskip-tests=false
