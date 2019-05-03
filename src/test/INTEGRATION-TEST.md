@@ -8,13 +8,13 @@
 ### Tested Platforms: 
 
     - Ubuntu 16.04
-    - WSO2 EI 6.4.0
+    - WSO2 EI 6.5.0
 
 STEPS
 
- 1. Download EI 6.4.0 from official website.
+ 1. Download EI 6.5.0 from official website.
 
- 2. This EI should be configured as below; (If you are using the EI version other than 6.4.0)
+ 2. This EI should be configured as below; (If you are using the EI version other than 6.5.0)
     	Please make sure that the below mentioned Axis configurations are enabled (repository/conf/axis2/axis2.xml).
 
     	    <messageFormatter contentType="application/x-amz-json-1.0"  class="org.apache.synapse.commons.json.JsonStreamFormatter"/>
