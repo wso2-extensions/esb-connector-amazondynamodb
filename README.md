@@ -8,7 +8,8 @@ AmazonDynamoDB enables customers to offload the administrative burdens of operat
 
 | Connector version | Supported Amazon DynamoDB API version | Supported WSO2 ESB/EI version |
 | ------------- | ---------------|------------- |
-| [1.0.0](https://github.com/wso2-extensions/esb-connector-amazondynamodb/tree/org.wso2.carbon.connector.amazondynamodb-1.0.0) | 2012-08-10 | ESB 5.0.0, EI 6.3.0, EI 6.4.0, EI 6.5.0 |
+| [1.0.1](https://github.com/wso2-extensions/esb-connector-amazondynamodb/tree/org.wso2.carbon.connector.amazondynamodb-1.0.1) | 2012-08-10 | ESB 5.0.0, EI 6.3.0, EI 6.4.0, EI 6.5.0 |
+| [1.0.0](https://github.com/wso2-extensions/esb-connector-amazondynamodb/tree/org.wso2.carbon.connector.amazondynamodb-1.0.0) | 2012-08-10 | ESB 5.0.0, EI 6.3.0, EI 6.4.0|
 
 ## Getting started
 
