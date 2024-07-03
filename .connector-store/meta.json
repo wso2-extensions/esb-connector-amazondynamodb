@@ -1,0 +1,20 @@
+{
+    "name": "Amazon DynamoDB",
+    "owner": "WSO2",
+    "category": "Other",
+    "documentationUrl": "https://ei.docs.wso2.com/en/latest/micro-integrator/references/connectors/amazondynamodb-connector/amazondynamodb-connector-overview/",
+    "description": "The Amazon DynamoDB connector allows you to access the Amazon DynamoDB REST API through the WSO2 ESB and perform CRUD operations. Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.",
+    "status": "Active",
+    "labels": [
+        "Database",
+        "Application"
+    ],
+    "releases": [
+        {
+            "tagName": "1.0.0",
+            "products": [
+                "EI 6.4.0"
+            ]
+        }
+    ]
+}
