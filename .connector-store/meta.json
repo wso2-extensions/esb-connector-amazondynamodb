@@ -6,8 +6,8 @@
     "description": "The Amazon DynamoDB connector allows you to access the Amazon DynamoDB REST API through the WSO2 ESB and perform CRUD operations. Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.",
     "status": "Active",
     "labels": [
-        "Database",
-        "Application"
+        "database",
+        "AWS"
     ],
     "releases": [
         {
