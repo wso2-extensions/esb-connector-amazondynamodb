@@ -8,7 +8,7 @@
     "mavenArtifactId": "org.wso2.carbon.connector.amazondynamodb",
     "description": "The Amazon DynamoDB connector allows you to access the Amazon DynamoDB REST API through the WSO2 ESB and perform CRUD operations. Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.",
     "status": "Active",
-    "connectorRank": 33,
+    "rank": 33,
     "type": "Connector",
     "labels": [
         "database",
@@ -100,7 +100,12 @@
                     "isHidden": false
                 }
             ],
-            "connections": [],
+            "connections": [
+                {
+                    "name": "amazondynamodb",
+                    "description": "Connection for Amazon DynamoDB database."
+                }
+            ],
             "isHidden": false
         }
     ]
