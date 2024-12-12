@@ -16,6 +16,99 @@
     ],
     "releases": [
         {
+            "tagName": "v1.0.2",
+            "products": [
+                "MI 4.3.0",
+                "MI 4.2.0",
+                "MI 4.1.0",
+                "MI 4.0.0"
+            ],
+            "operations": [
+                {
+                    "name": "init",
+                    "description": "Config operation with common parameters.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createTable",
+                    "description": "Add a new table.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteTable",
+                    "description": "Delete a table and all of its items.",
+                    "isHidden": false
+                },
+                {
+                    "name": "describeLimits",
+                    "description": "Get the current provisioned-capacity limits.",
+                    "isHidden": false
+                },
+                {
+                    "name": "describeTable",
+                    "description": "Get the information about the table.",
+                    "isHidden": false
+                },
+                {
+                    "name": "listTables",
+                    "description": "Get an array of table names.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateTable",
+                    "description": "Update the table.",
+                    "isHidden": false
+                },
+                {
+                    "name": "batchGetItem",
+                    "description": "Get the attributes of one or more items from one or more tables.",
+                    "isHidden": false
+                },
+                {
+                    "name": "batchWriteItem",
+                    "description": "Put or delete multiple items in one or more tables.",
+                    "isHidden": false
+                },
+                {
+                    "name": "putItem",
+                    "description": "Create a new item, or replace an old item with a new item.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteItem",
+                    "description": "Delete a single item in a table by primary key.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getItem",
+                    "description": "Get a set of attributes.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateItem",
+                    "description": "Update an existing item's attributes.",
+                    "isHidden": false
+                },
+                {
+                    "name": "query",
+                    "description": "Return all of the items from the table or index with that partition key value.",
+                    "isHidden": false
+                },
+                {
+                    "name": "scan",
+                    "description": "Returns one or more items and item attributes by accessing every item in a table or a secondary index.",
+                    "isHidden": false
+                }
+            ],
+            "connections": [
+                {
+                    "name": "amazondynamodb",
+                    "description": "Connection for Amazon DynamoDB database."
+                }
+            ],
+            "isHidden": false
+        },
+        {
             "tagName": "org.wso2.carbon.connector.amazondynamodb-1.0.1",
             "products": [
                 "MI 4.3.0",
