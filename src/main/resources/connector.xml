@@ -23,5 +23,6 @@
         <dependency component="amazondynamodb-item"/>
         <description>AmazonDynamoDB connector library</description>
     </component>
+    <displayName>Amazon DynamoDB</displayName>
     <icon>icon/icon-small.gif</icon>
 </connector>
