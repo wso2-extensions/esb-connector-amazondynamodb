@@ -100,12 +100,7 @@
                     "isHidden": false
                 }
             ],
-            "connections": [
-                {
-                    "name": "amazondynamodb",
-                    "description": "Connection for Amazon DynamoDB database."
-                }
-            ],
+            "connections": [],
             "isHidden": false
         },
         {
@@ -193,12 +188,7 @@
                     "isHidden": false
                 }
             ],
-            "connections": [
-                {
-                    "name": "amazondynamodb",
-                    "description": "Connection for Amazon DynamoDB database."
-                }
-            ],
+            "connections": [],
             "isHidden": false
         }
     ]
