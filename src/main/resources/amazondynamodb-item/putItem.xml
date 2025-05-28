@@ -38,6 +38,8 @@
                description="Determines whether item collection metrics are returned."/>
     <parameter name="returnValues"
                description="Determines whether to get the item attributes as they appeared before they were updated."/>
+    <parameter name="responseVariable" description="The name of the variable to which the response should be stored."/>
+    <parameter name="overwriteBody" description="Replace the Message Body in Message Context with the response of the operation."/>
     <sequence>
         <property name="target" value="DynamoDB_20120810.PutItem"/>
         <property name="item" expression="$func:item"/>

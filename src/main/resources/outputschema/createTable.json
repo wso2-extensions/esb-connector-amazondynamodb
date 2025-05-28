@@ -1,0 +1,248 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Output Schema for createTable Operation",
+  "description": "Output schema for the createTable operation in the connector.",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The main response payload from the createTable operation.",
+      "properties": {
+        "TableDescription": {
+          "type": "object",
+          "description": "Represents the properties of a table.",
+          "properties": {
+            "AttributeDefinitions": {
+              "type": "array",
+              "description": "An array of AttributeDefinition objects that describe the key schema for the table and indexes.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "AttributeName": {
+                    "type": "string",
+                    "description": "A name for the attribute."
+                  },
+                  "AttributeType": {
+                    "type": "string",
+                    "description": "The data type for the attribute, where: S - the attribute is of type String, N - the attribute is of type Number, B - the attribute is of type Binary.",
+                    "enum": ["S", "N", "B"]
+                  }
+                },
+                "required": ["AttributeName", "AttributeType"],
+                "additionalProperties": false
+              }
+            },
+            "CreationDateTime": {
+              "type": "number",
+              "description": "The date and time when the table was created, in UNIX epoch time format."
+            },
+            "DeletionProtectionEnabled": {
+              "type": "boolean",
+              "description": "Indicates whether deletion protection is enabled (true) or disabled (false) on the table."
+            },
+            "ItemCount": {
+              "type": "integer",
+              "description": "The number of items in the specified table.",
+              "minimum": 0
+            },
+            "KeySchema": {
+              "type": "array",
+              "description": "The primary key structure for the table.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "AttributeName": {
+                    "type": "string",
+                    "description": "The name of a key attribute."
+                  },
+                  "KeyType": {
+                    "type": "string",
+                    "description": "The role that this key attribute will assume: HASH - partition key, RANGE - sort key.",
+                    "enum": ["HASH", "RANGE"]
+                  }
+                },
+                "required": ["AttributeName", "KeyType"],
+                "additionalProperties": false
+              }
+            },
+            "LocalSecondaryIndexes": {
+              "type": "array",
+              "description": "Represents one or more local secondary indexes on the table.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "IndexArn": {
+                    "type": "string",
+                    "description": "The Amazon Resource Name (ARN) that uniquely identifies the index."
+                  },
+                  "IndexName": {
+                    "type": "string",
+                    "description": "Represents the name of the local secondary index."
+                  },
+                  "IndexSizeBytes": {
+                    "type": "integer",
+                    "description": "The total size of the specified index, in bytes.",
+                    "minimum": 0
+                  },
+                  "ItemCount": {
+                    "type": "integer",
+                    "description": "The number of items in the specified index.",
+                    "minimum": 0
+                  },
+                  "KeySchema": {
+                    "type": "array",
+                    "description": "The complete key schema for the local secondary index.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "AttributeName": {
+                          "type": "string",
+                          "description": "The name of a key attribute."
+                        },
+                        "KeyType": {
+                          "type": "string",
+                          "description": "The role that this key attribute will assume: HASH - partition key, RANGE - sort key.",
+                          "enum": ["HASH", "RANGE"]
+                        }
+                      },
+                      "required": ["AttributeName", "KeyType"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "Projection": {
+                    "type": "object",
+                    "description": "Represents attributes that are copied (projected) from the table into the local secondary index.",
+                    "properties": {
+                      "ProjectionType": {
+                        "type": "string",
+                        "description": "The set of attributes that are projected into the index: ALL - All of the table attributes are projected, KEYS_ONLY - Only the index and primary keys are projected, INCLUDE - Only the specified table attributes are projected.",
+                        "enum": ["ALL", "KEYS_ONLY", "INCLUDE"]
+                      },
+                      "NonKeyAttributes": {
+                        "type": "array",
+                        "description": "Represents the non-key attribute names which will be projected into the index.",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "GlobalSecondaryIndexes": {
+              "type": "array",
+              "description": "The global secondary indexes, if any, on the table.",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "ProvisionedThroughput": {
+              "type": "object",
+              "description": "The provisioned throughput settings for the table.",
+              "properties": {
+                "NumberOfDecreasesToday": {
+                  "type": "integer",
+                  "description": "The number of provisioned throughput decreases for this table during this UTC calendar day.",
+                  "minimum": 0
+                },
+                "ReadCapacityUnits": {
+                  "type": "integer",
+                  "description": "The maximum number of strongly consistent reads consumed per second before DynamoDB returns a ThrottlingException.",
+                  "minimum": 0
+                },
+                "WriteCapacityUnits": {
+                  "type": "integer",
+                  "description": "The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            },
+            "TableArn": {
+              "type": "string",
+              "description": "The Amazon Resource Name (ARN) that uniquely identifies the table."
+            },
+            "TableId": {
+              "type": "string",
+              "description": "Unique identifier for the table for which the backup was created."
+            },
+            "TableName": {
+              "type": "string",
+              "description": "The name of the table."
+            },
+            "TableSizeBytes": {
+              "type": "integer",
+              "description": "The total size of the specified table, in bytes.",
+              "minimum": 0
+            },
+            "TableStatus": {
+              "type": "string",
+              "description": "The current state of the table: CREATING - The table is being created, UPDATING - The table is being updated, DELETING - The table is being deleted, ACTIVE - The table is ready for use, INACCESSIBLE_ENCRYPTION_CREDENTIALS - The AWS KMS key used to encrypt the table is not accessible, ARCHIVING - The table is being archived, ARCHIVED - The table has been archived.",
+              "enum": ["CREATING", "UPDATING", "DELETING", "ACTIVE", "INACCESSIBLE_ENCRYPTION_CREDENTIALS", "ARCHIVING", "ARCHIVED"]
+            },
+            "BillingModeSummary": {
+              "type": "object",
+              "description": "Contains the details for the read/write capacity mode.",
+              "properties": {
+                "BillingMode": {
+                  "type": "string",
+                  "description": "Controls how you are charged for read and write throughput and how you manage capacity.",
+                  "enum": ["PROVISIONED", "PAY_PER_REQUEST"]
+                },
+                "LastUpdateToPayPerRequestDateTime": {
+                  "type": "number",
+                  "description": "Represents the time when PAY_PER_REQUEST was last set as the read/write capacity mode."
+                }
+              },
+              "additionalProperties": false
+            },
+            "SSEDescription": {
+              "type": "object",
+              "description": "The description of the server-side encryption status on the specified table.",
+              "additionalProperties": true
+            },
+            "StreamSpecification": {
+              "type": "object", 
+              "description": "The current DynamoDB Streams configuration for the table.",
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["TableDescription"],
+      "additionalProperties": false
+    },
+    "headers": {
+      "type": "object",
+      "description": "Transport headers returned by the createTable operation.",
+      "additionalProperties": true
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the createTable operation.",
+      "properties": {
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code of the API response.",
+          "minimum": 100,
+          "maximum": 599
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "statusCode"
+      ]
+    }
+  },
+  "required": [
+    "payload",
+    "headers",
+    "attributes"
+  ],
+  "additionalProperties": false
+}

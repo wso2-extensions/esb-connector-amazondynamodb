@@ -16,30 +16,36 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="amazondynamodb-table" type="synapse/template">
+<component name="amazondynamodb-table" type="synapse/template" displayName="Table">
     <subComponents>
         <component name="createTable">
             <file>createTable.xml</file>
+            <displayName>Create Table</displayName>
             <description>Add a new table.</description>
         </component>=
         <component name="deleteTable">
             <file>deleteTable.xml</file>
+            <displayName>Delete Table</displayName>
             <description>Delete a table and all of its items.</description>
         </component>
         <component name="describeLimits">
             <file>describeLimits.xml</file>
+            <displayName>Describe Limits</displayName>
             <description>Get the current provisioned-capacity limits.</description>
         </component>
         <component name="describeTable">
             <file>describeTable.xml</file>
+            <displayName>Describe Table</displayName>
             <description>Get the information about the table.</description>
         </component>
         <component name="listTables">
             <file>listTables.xml</file>
+            <displayName>List Tables</displayName>
             <description>Get an array of table names.</description>
         </component>
         <component name="updateTable">
             <file>updateTable.xml</file>
+            <displayName>Update Table</displayName>
             <description>Update the table.</description>
         </component>
     </subComponents>

@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Output Schema for deleteTable Operation",
+  "description": "Output schema for the deleteTable operation in the connector.",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The main response payload from the deleteTable operation.",
+      "properties": {
+        "TableDescription": {
+          "type": "object",
+          "description": "The table description of the deleted table.",
+          "properties": {
+            "DeletionProtectionEnabled": {
+              "type": "boolean",
+              "description": "Indicates whether deletion protection is enabled for the table."
+            },
+            "ItemCount": {
+              "type": "integer",
+              "description": "The number of items in the table.",
+              "minimum": 0
+            },
+            "ProvisionedThroughput": {
+              "type": "object",
+              "description": "The provisioned throughput settings for the table.",
+              "properties": {
+                "NumberOfDecreasesToday": {
+                  "type": "integer",
+                  "description": "The number of provisioned throughput decreases for this table during this UTC calendar day.",
+                  "minimum": 0
+                },
+                "ReadCapacityUnits": {
+                  "type": "integer",
+                  "description": "The maximum number of strongly consistent reads consumed per second.",
+                  "minimum": 1
+                },
+                "WriteCapacityUnits": {
+                  "type": "integer",
+                  "description": "The maximum number of writes consumed per second.",
+                  "minimum": 1
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "ReadCapacityUnits",
+                "WriteCapacityUnits"
+              ]
+            },
+            "TableArn": {
+              "type": "string",
+              "description": "The Amazon Resource Name (ARN) that uniquely identifies the table."
+            },
+            "TableId": {
+              "type": "string",
+              "description": "Unique identifier for the table.",
+              "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+            },
+            "TableName": {
+              "type": "string",
+              "description": "The name of the table."
+            },
+            "TableSizeBytes": {
+              "type": "integer",
+              "description": "The total size of the specified table, in bytes.",
+              "minimum": 0
+            },
+            "TableStatus": {
+              "type": "string",
+              "description": "The current state of the table.",
+              "enum": [
+                "CREATING",
+                "UPDATING",
+                "DELETING",
+                "ACTIVE",
+                "INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+                "ARCHIVING",
+                "ARCHIVED"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "TableName",
+            "TableStatus"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "TableDescription"
+      ]
+    },
+    "headers": {
+      "type": "object",
+      "description": "Transport headers returned by the deleteTable operation.",
+      "additionalProperties": true
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the deleteTable operation.",
+      "properties": {
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code of the API response.",
+          "minimum": 100,
+          "maximum": 599
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "statusCode"
+      ]
+    }
+  },
+  "required": [
+    "payload",
+    "headers",
+    "attributes"
+  ],
+  "additionalProperties": false
+}

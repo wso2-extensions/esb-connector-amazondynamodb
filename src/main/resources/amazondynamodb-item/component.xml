@@ -16,38 +16,46 @@
  ~  specific language governing permissions and limitations
  ~  under the License.
 -->
-<component name="amazondynamodb-item" type="synapse/template">
+<component name="amazondynamodb-item" type="synapse/template" displayName="Item">
     <subComponents>
         <component name="batchGetItem">
             <file>batchGetItem.xml</file>
+            <displayName>Batch Get Item</displayName>
             <description>Get the attributes of one or more items from one or more tables.</description>
         </component>
         <component name="batchWriteItem">
             <file>batchWriteItem.xml</file>
+            <displayName>Batch Write Item</displayName>
             <description>Put or delete multiple items in one or more tables.</description>
         </component>
         <component name="putItem">
             <file>putItem.xml</file>
+            <displayName>Put Item</displayName>
             <description>Create a new item, or replace an old item with a new item.</description>
         </component>
         <component name="deleteItem">
             <file>deleteItem.xml</file>
+            <displayName>Delete Item</displayName>
             <description>Delete a single item in a table by primary key.</description>
         </component>
         <component name="getItem">
             <file>getItem.xml</file>
+            <displayName>Get Item</displayName>
             <description>Get a set of attributes.</description>
         </component>
         <component name="updateItem">
             <file>updateItem.xml</file>
+            <displayName>Update Item</displayName>
             <description>Update an existing item's attributes.</description>
         </component>
         <component name="query">
             <file>query.xml</file>
+            <displayName>Query</displayName>
             <description>Return all of the items from the table or index with that partition key value.</description>
         </component>
         <component name="scan">
             <file>scan.xml</file>
+            <displayName>Scan</displayName>
             <description>Returns one or more items and item attributes by accessing every item in a table or a secondary
                 index.
             </description>
