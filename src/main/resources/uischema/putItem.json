@@ -16,7 +16,7 @@
               "displayName": "Connection Name",
               "inputType": "connection",
               "allowedConnectionTypes": [
-                "AWSBasic"
+                "amazondynamodb"
               ],
               "defaultValue": "",
               "required": "true",

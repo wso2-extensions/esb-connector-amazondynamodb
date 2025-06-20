@@ -1,6 +1,6 @@
 {
   "connectorName": "amazondynamodb",
-  "connectionName": "AWSBasic",
+  "connectionName": "amazondynamodb",
   "testConnectionEnabled": false,
   "title": "Amazon DynamoDB Connection",
   "help": "<h1>Amazon DynamoDB Connector</h1> <b>The Amazon DynamoDB connector allows you to connect to Amazon DynamoDB service for performing database operations</b>",
