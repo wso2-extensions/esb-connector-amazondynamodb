@@ -22,9 +22,9 @@
             ],
             "operations": [
                 {
-                    "name": "false",
+                    "name": "init",
                     "description": "Config operation with common parameters.",
-                    "isHidden": false
+                    "isHidden": true
                 },
                 {
                     "name": "createTable",
