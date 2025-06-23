@@ -1,0 +1,153 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "createTable",
+  "title": "Create Table",
+  "help": "<h1>Create Table</h1> <b>Creates a new DynamoDB table.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_CreateTable.html\">CreateTable API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "tableName",
+              "displayName": "Table Name",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The name of the table to create. Must be between 3 and 255 characters and unique for your AWS account in the current region."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "attributeDefinitions",
+              "displayName": "Attribute Definitions",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Array of attributes that describe the key schema for the table and indexes. Each element describes one attribute. Example: [{\"AttributeName\":\"id\",\"AttributeType\":\"S\"},{\"AttributeName\":\"timestamp\",\"AttributeType\":\"N\"}]"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "keySchema",
+              "displayName": "Key Schema",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Specifies the attributes that make up the primary key for the table. Must include one HASH (partition key) and optionally one RANGE (sort key). Example: [{\"AttributeName\":\"id\",\"KeyType\":\"HASH\"},{\"AttributeName\":\"timestamp\",\"KeyType\":\"RANGE\"}]"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "provisionedThroughput",
+              "displayName": "Provisioned Throughput",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The provisioned throughput settings for the table. Defines the maximum number of reads and writes per second. Example: {\"ReadCapacityUnits\":5,\"WriteCapacityUnits\":5}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Advanced",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "localSecondaryIndexes",
+              "displayName": "Local Secondary Indexes",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "JSON array of local secondary indexes (maximum: 5). Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "globalSecondaryIndexes",
+              "displayName": "Global Secondary Indexes",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "JSON array of global secondary indexes (maximum: 5). Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "StreamSpecification",
+              "displayName": "Stream Specification",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Settings for DynamoDB Streams on the table. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

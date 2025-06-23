@@ -1,0 +1,90 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "listTables",
+  "title": "List Tables",
+  "help": "<h1>List Tables</h1> <b>Retrieves tables in the current AWS region.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ListTables.html\">ListTables API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "exclusiveStartTableName",
+              "displayName": "Exclusive Start Table Name",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "The first table name that this operation will evaluate. Use the value returned for LastEvaluatedTableName in a previous operation"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "limit",
+              "displayName": "Limit",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "A maximum number of table names to return. If this parameter is not specified, the limit is 100"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "scan",
+  "title": "Scan",
+  "help": "<h1>Scan</h1> <b>Scans a table and returns one or more items and item attributes by accessing every item in the table.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Scan.html\">Scan API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "tableName",
+              "displayName": "Table Name",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The name of the table to scan. Must be between 3 and 255 characters."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "indexName",
+              "displayName": "Index Name",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "The name of a secondary index to scan. This can be any local secondary index or global secondary index on the table."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Filtering",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "filterExpression",
+              "displayName": "Filter Expression",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "A string that contains conditions that DynamoDB applies after the scan operation, but before the data is returned. Items that do not satisfy the criteria are not returned. Example: \"#status = :val\""
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "scanFilter",
+              "displayName": "Scan Filter",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Legacy parameter for filtering. Use FilterExpression instead. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "conditionalOperator",
+              "displayName": "Conditional Operator",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "AND",
+                "OR"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Logical operator to apply to the conditions in ScanFilter. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Projection",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "projectionExpression",
+              "displayName": "Projection Expression",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "String that identifies one or more attributes to retrieve from the table. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "attributesToGet",
+              "displayName": "Attributes To Get",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Legacy parameter for attribute selection. Use ProjectionExpression instead. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "select",
+              "displayName": "Select",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "ALL_ATTRIBUTES",
+                "ALL_PROJECTED_ATTRIBUTES",
+                "SPECIFIC_ATTRIBUTES",
+                "COUNT"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Attributes to be returned in the result. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Expression Attributes",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expressionAttributeNames",
+              "displayName": "Expression Attribute Names",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "One or more substitution tokens for attribute names in an expression. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expressionAttributeValues",
+              "displayName": "Expression Attribute Values",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "One or more values that can be substituted in an expression. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Pagination",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "limit",
+              "displayName": "Limit",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Maximum number of items to evaluate (not necessarily returned). Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "exclusiveStartKey",
+              "displayName": "Exclusive Start Key",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Primary key of the first item that this operation will evaluate. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Parallel Scan",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "segment",
+              "displayName": "Segment",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Individual segment to be scanned by an application worker (for parallel scan). Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "totalSegments",
+              "displayName": "Total Segments",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Total number of segments into which the scan operation will be divided. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Read Options",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "consistentRead",
+              "displayName": "Consistent Read",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "true",
+                "false"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Determines the read consistency model during the scan. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnConsumedCapacity",
+              "displayName": "Return Consumed Capacity",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "INDEXES",
+                "TOTAL",
+                "NONE"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

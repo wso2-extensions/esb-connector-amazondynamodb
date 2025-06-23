@@ -1,0 +1,102 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "batchGetItem",
+  "title": "Batch Get Item",
+  "help": "<h1>Batch Get Item</h1> <b>Returns the attributes of one or more items from one or more tables.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchGetItem.html\">BatchGetItem API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "requestItems",
+              "displayName": "Request Items",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be included only once per BatchGetItem request. Example: {\"Table1\":{\"Keys\":[{\"id\":{\"S\":\"123\"}}]},\"Table2\":{\"Keys\":[{\"pk\":{\"S\":\"abc\"}}]}}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Return Options",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnConsumedCapacity",
+              "displayName": "Return Consumed Capacity",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "INDEXES",
+                "TOTAL",
+                "NONE"
+              ],
+              "required": "false",
+              "helpTip": "Determines the level of detail about provisioned throughput consumption to return. TOTAL returns consumption for table and indexes, INDEXES returns consumption for indexes, NONE returns nothing."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

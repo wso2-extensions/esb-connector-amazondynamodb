@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Output Schema for scan Operation",
+  "description": "Output schema for the scan operation in the connector.",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The main response payload from the scan operation."
+    },
+    "headers": {
+      "type": "object",
+      "description": "Transport headers returned by the scan operation.",
+      "additionalProperties": true
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the scan operation.",
+      "properties": {
+        "statusCode": {
+          "type": "integer",
+          "description": "HTTP status code of the API response.",
+          "minimum": 100,
+          "maximum": 599
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "statusCode"
+      ]
+    }
+  },
+  "required": [
+    "payload",
+    "headers",
+    "attributes"
+  ],
+  "additionalProperties": false
+}

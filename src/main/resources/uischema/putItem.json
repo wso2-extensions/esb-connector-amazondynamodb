@@ -1,0 +1,211 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "putItem",
+  "title": "Put Item",
+  "help": "<h1>Put Item</h1> <b>Creates a new item, or replaces an old item with a new item.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html\">PutItem API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "tableName",
+              "displayName": "Table Name",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The name of the table to contain the item. Must be between 3 and 255 characters."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "item",
+              "displayName": "Item",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "A map of attribute name/value pairs representing the item to create or replace. Each value must be a DynamoDB data type. Example: {\"id\":{\"S\":\"123\"},\"name\":{\"S\":\"John\"}}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Conditional",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "conditionExpression",
+              "displayName": "Condition Expression",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "A condition that must be satisfied for the operation to succeed. The operation fails if the condition evaluates to false. Example: \"attribute_not_exists(id)\""
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expected",
+              "displayName": "Expected",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "A map of attribute/condition pairs. Cannot be used with ConditionExpression. Example: {\"attr1\":{\"Value\":{\"S\":\"val1\"},\"ComparisonOperator\":\"EQ\"}}"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "conditionalOperator",
+              "displayName": "Conditional Operator",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "AND",
+                "OR"
+              ],
+              "required": "false",
+              "helpTip": "Logical operator to apply to conditions in the Expected map. Default is AND if not specified."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Expression Attributes",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expressionAttributeNames",
+              "displayName": "Expression Attribute Names",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "Name substitution tokens for attribute names in an expression. Maps placeholder names to actual attribute names. Example: {\"#n\":\"name\",\"#t\":\"timestamp\"}"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expressionAttributeValues",
+              "displayName": "Expression Attribute Values",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "Value substitution tokens for expressions. Maps placeholder values to actual attribute values. Example: {\":val1\":{\"S\":\"value1\"},\":val2\":{\"N\":\"123\"}}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Return Options",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnValues",
+              "displayName": "Return Values",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "NONE",
+                "ALL_OLD"
+              ],
+              "required": "false",
+              "helpTip": "Use NONE if you don't want item attributes returned, or ALL_OLD to get the item attributes as they appeared before they were modified."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnConsumedCapacity",
+              "displayName": "Return Consumed Capacity",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "INDEXES",
+                "TOTAL",
+                "NONE"
+              ],
+              "required": "false",
+              "helpTip": "Determines the level of detail about provisioned throughput consumption to return. TOTAL returns consumption for table and indexes, INDEXES returns consumption for indexes, NONE returns nothing."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnItemCollectionMetrics",
+              "displayName": "Return Item Collection Metrics",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "SIZE",
+                "NONE"
+              ],
+              "required": "false",
+              "helpTip": "Determines whether item collection metrics are returned. SIZE returns statistics about the item sizes, NONE returns no statistics."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "batchWriteItem",
+  "title": "Batch Write Item",
+  "help": "<h1>Batch Write Item</h1> <b>Puts or deletes multiple items in one or more tables.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html\">BatchWriteItem API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "requestItems",
+              "displayName": "Request Items",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "JSON map of table names and list of operations to perform. Format: {\"TableName\":[{\"PutRequest\":{\"Item\":{...}}}]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Return Options",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnConsumedCapacity",
+              "displayName": "Return Consumed Capacity",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "INDEXES",
+                "TOTAL",
+                "NONE"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnItemCollectionMetrics",
+              "displayName": "Return Item Collection Metrics",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "SIZE",
+                "NONE"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Determines whether item collection metrics are returned. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

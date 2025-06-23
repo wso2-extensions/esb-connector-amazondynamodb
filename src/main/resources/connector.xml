@@ -18,7 +18,7 @@
 -->
 <connector>
     <component name="amazondynamodb" package="org.wso2.carbon.connector">
-        <dependency component="amazondynamodb-config"/>
+        <dependency component="config"/>
         <dependency component="amazondynamodb-table"/>
         <dependency component="amazondynamodb-item"/>
         <description>AmazonDynamoDB connector library</description>

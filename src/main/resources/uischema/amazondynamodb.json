@@ -1,0 +1,89 @@
+{
+  "connectorName": "amazondynamodb",
+  "connectionName": "amazondynamodb",
+  "testConnectionEnabled": false,
+  "title": "Amazon DynamoDB Connection",
+  "help": "<h1>Amazon DynamoDB Connector</h1> <b>The Amazon DynamoDB connector allows you to connect to Amazon DynamoDB service for performing database operations</b>",
+  "elements": [
+    {
+      "type": "attribute",
+      "value": {
+        "name": "connectionName",
+        "displayName": "Connection Name",
+        "inputType": "string",
+        "defaultValue": "DYNAMODB_CONNECTION_1",
+        "required": "true",
+        "helpTip": "The name for the DynamoDB connection",
+        "validation": "nameWithoutSpecialCharactors"
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "region",
+                    "displayName": "Region",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "The AWS region where your DynamoDB resources are located. Example: us-east-1, us-west-2, eu-west-1"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "accessKeyId",
+                    "displayName": "Access Key ID",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "The AWS access key ID that corresponds to the secret access key. Used to sign requests to AWS services."
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "secretAccessKey",
+                    "displayName": "Secret Access Key",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": "true",
+                    "helpTip": "The AWS secret access key associated with your AWS account. Keep this secure and never share it publicly."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Advanced",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "blocking",
+              "displayName": "Blocking",
+              "inputType": "booleanOrExpression",
+              "defaultValue": "false",
+              "required": "false",
+              "helpTip": "Whether to perform blocking invocations to Amazon DynamoDB. When true, the operation waits for a response before proceeding."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

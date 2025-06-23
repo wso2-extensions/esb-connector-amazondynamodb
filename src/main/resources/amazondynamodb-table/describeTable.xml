@@ -18,6 +18,8 @@
 -->
 <template name="describeTable" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="tableName" description="The name of the table to describe."/>
+    <parameter name="responseVariable" description="The name of the variable to which the response should be stored."/>
+    <parameter name="overwriteBody" description="Replace the Message Body in Message Context with the response of the operation."/>
     <sequence>
         <property name="target" value="DynamoDB_20120810.DescribeTable"/>
         <property name="tableName" expression="$func:tableName"/>

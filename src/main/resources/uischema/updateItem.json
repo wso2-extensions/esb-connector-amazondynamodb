@@ -1,0 +1,249 @@
+{
+  "connectorName": "amazondynamodb",
+  "operationName": "updateItem",
+  "title": "Update Item",
+  "help": "<h1>Update Item</h1> <b>Edits an existing item's attributes, or inserts a new item if it does not already exist.</b> <br/><br/> For more information, see <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateItem.html\">UpdateItem API Reference</a>.",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection Name",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "amazondynamodb"
+              ],
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection name"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "tableName",
+              "displayName": "Table Name",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "The name of the table containing the item to update. Must be between 3 and 255 characters."
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "key",
+              "displayName": "Key",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Primary key attribute values for the item to update. Must be a JSON object where keys are attribute names and values are attribute values in DynamoDB format. Example: {\"id\":{\"S\":\"123\"}}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Update Actions",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "updateExpression",
+              "displayName": "Update Expression",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "An expression that defines one or more attributes to be updated, the action to be performed on them, and new values for them. Example: \"SET #name = :val1, #status = :val2\""
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "attributeUpdates",
+              "displayName": "Attribute Updates",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "Map of attribute names and their corresponding actions to perform. Cannot be used with UpdateExpression. Example: {\"attr1\":{\"Action\":\"PUT\",\"Value\":{\"S\":\"newValue\"}}}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Conditional",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "conditionExpression",
+              "displayName": "Condition Expression",
+              "inputType": "stringOrExpression",
+              "required": "false",
+              "helpTip": "A condition that must be satisfied for the operation to succeed. The update operation only succeeds if the condition evaluates to true. Example: \"attribute_exists(#status)\""
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expected",
+              "displayName": "Expected",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "JSON map of attribute/condition pairs for conditional operations. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "conditionalOperator",
+              "displayName": "Conditional Operator",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "AND",
+                "OR"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Logical operator to apply to conditions in the expected map. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Expression Attributes",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expressionAttributeNames",
+              "displayName": "Expression Attribute Names",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "JSON map for substitution tokens for attribute names. Format: {\"#name\":\"ActualAttributeName\"}. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "expressionAttributeValues",
+              "displayName": "Expression Attribute Values",
+              "inputType": "stringOrExpression",
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "JSON map for substitution values in expressions. Format: {\":val\":{\"S\":\"value\"}}. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Return Options",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnValues",
+              "displayName": "Return Values",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "NONE",
+                "ALL_OLD",
+                "UPDATED_OLD",
+                "ALL_NEW",
+                "UPDATED_NEW"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Use to get item attributes as they appeared before/after the update. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnConsumedCapacity",
+              "displayName": "Return Consumed Capacity",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "INDEXES",
+                "TOTAL",
+                "NONE"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "returnItemCollectionMetrics",
+              "displayName": "Return Item Collection Metrics",
+              "inputType": "comboOrExpression",
+              "comboValues": [
+                "SIZE",
+                "NONE"
+              ],
+              "defaultValue": "",
+              "required": "false",
+              "helpTip": "Determines whether item collection metrics are returned. Optional parameter"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Output",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "responseVariable",
+              "displayName": "Output Variable Name",
+              "inputType": "string",
+              "deriveResponseVariable": "true",
+              "required": "true",
+              "helpTip": "Name of the variable to which the output of the operation should be assigned"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "overwriteBody",
+              "displayName": "Overwrite Message Body",
+              "inputType": "checkbox",
+              "defaultValue": "false",
+              "helpTip": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable).",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
