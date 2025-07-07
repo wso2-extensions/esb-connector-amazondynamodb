@@ -16,7 +16,7 @@
     ],
     "releases": [
         {
-            "tagName": "v2.0.0",
+            "tagName": "v2.0.1",
             "products": [
                 "MI 4.4.0"
             ],
@@ -28,73 +28,85 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table to contain the item. Must be between 3 and 255 characters."
                         },
                         {
                             "name": "item",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "A map of attribute name/value pairs representing the item to create or replace. Each value must be a DynamoDB data type. Example: {\"id\":{\"S\":\"123\"},\"name\":{\"S\":\"John\"}}"
                         },
                         {
                             "name": "conditionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A condition that must be satisfied for the operation to succeed. The operation fails if the condition evaluates to false. Example: \"attribute_not_exists(id)\""
                         },
                         {
                             "name": "expected",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A map of attribute/condition pairs. Cannot be used with ConditionExpression. Example: {\"attr1\":{\"Value\":{\"S\":\"val1\"},\"ComparisonOperator\":\"EQ\"}}"
                         },
                         {
                             "name": "conditionalOperator",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Logical operator to apply to conditions in the Expected map. Default is AND if not specified."
                         },
                         {
                             "name": "expressionAttributeNames",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Name substitution tokens for attribute names in an expression. Maps placeholder names to actual attribute names. Example: {\"#n\":\"name\",\"#t\":\"timestamp\"}"
                         },
                         {
                             "name": "expressionAttributeValues",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Value substitution tokens for expressions. Maps placeholder values to actual attribute values. Example: {\":val1\":{\"S\":\"value1\"},\":val2\":{\"N\":\"123\"}}"
                         },
                         {
                             "name": "returnValues",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Use NONE if you don't want item attributes returned, or ALL_OLD to get the item attributes as they appeared before they were modified."
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption to return. TOTAL returns consumption for table and indexes, INDEXES returns consumption for indexes, NONE returns nothing."
                         },
                         {
                             "name": "returnItemCollectionMetrics",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines whether item collection metrics are returned. SIZE returns statistics about the item sizes, NONE returns no statistics."
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -107,19 +119,22 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table to describe (minimum length: 3, maximum length: 255)"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -132,13 +147,15 @@
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -151,25 +168,29 @@
                         {
                             "name": "exclusiveStartTableName",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "The first table name that this operation will evaluate. Use the value returned for LastEvaluatedTableName in a previous operation"
                         },
                         {
                             "name": "limit",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A maximum number of table names to return. If this parameter is not specified, the limit is 100"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -182,73 +203,85 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table from which to delete the item. Must be between 3 and 255 characters."
                         },
                         {
                             "name": "key",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Primary key attribute values for the item to delete. Must be a JSON object where keys are attribute names and values are attribute values in DynamoDB format. Example: {\"id\":{\"S\":\"123\"}}"
                         },
                         {
                             "name": "conditionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A condition that must be satisfied for the operation to succeed. The delete operation only succeeds if the condition evaluates to true. Example: \"attribute_exists(#status)\""
                         },
                         {
                             "name": "expected",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A map of attribute/condition pairs. Cannot be used with ConditionExpression. Example: {\"attr1\":{\"Value\":{\"S\":\"val1\"},\"ComparisonOperator\":\"EQ\"}}"
                         },
                         {
                             "name": "conditionalOperator",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Logical operator to apply to conditions in the Expected map. Default is AND if not specified."
                         },
                         {
                             "name": "expressionAttributeNames",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Name substitution tokens for attribute names in an expression. Maps placeholder names to actual attribute names. Example: {\"#n\":\"name\",\"#t\":\"timestamp\"}"
                         },
                         {
                             "name": "expressionAttributeValues",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Value substitution tokens for expressions. Maps placeholder values to actual attribute values. Example: {\":val1\":{\"S\":\"value1\"},\":val2\":{\"N\":\"123\"}}"
                         },
                         {
                             "name": "returnValues",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Use NONE if you don't want item attributes returned, or ALL_OLD to get the item attributes as they appeared before they were deleted."
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption to return. TOTAL returns consumption for table and indexes, INDEXES returns consumption for indexes, NONE returns nothing."
                         },
                         {
                             "name": "returnItemCollectionMetrics",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines whether item collection metrics are returned. SIZE returns statistics about the item sizes, NONE returns no statistics."
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -261,43 +294,50 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table to update (minimum length: 3, maximum length: 255)"
                         },
                         {
                             "name": "attributeDefinitions",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON array of attributes that describe the key schema for the table and indexes. Optional parameter"
                         },
                         {
                             "name": "globalSecondaryIndexUpdates",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON array of global secondary index updates. Optional parameter"
                         },
                         {
                             "name": "StreamSpecification",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "DynamoDB streams configuration for the table. Optional parameter"
                         },
                         {
                             "name": "provisionedThroughput",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "New provisioned throughput settings. Format: {\"ReadCapacityUnits\":number,\"WriteCapacityUnits\":number}"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -310,25 +350,29 @@
                         {
                             "name": "requestItems",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be included only once per BatchGetItem request. Example: {\"Table1\":{\"Keys\":[{\"id\":{\"S\":\"123\"}}]},\"Table2\":{\"Keys\":[{\"pk\":{\"S\":\"abc\"}}]}}"
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption to return. TOTAL returns consumption for table and indexes, INDEXES returns consumption for indexes, NONE returns nothing."
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -341,31 +385,36 @@
                         {
                             "name": "requestItems",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "JSON map of table names and list of operations to perform. Format: {\"TableName\":[{\"PutRequest\":{\"Item\":{...}}}]}"
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
                         },
                         {
                             "name": "returnItemCollectionMetrics",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines whether item collection metrics are returned. Optional parameter"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -378,55 +427,64 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table containing the requested item. Must be between 3 and 255 characters."
                         },
                         {
                             "name": "key",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Primary key attribute values for the item. Must be a JSON object where keys are attribute names and values are attribute values in DynamoDB format. Example: {\"id\":{\"S\":\"123\"}}"
                         },
                         {
                             "name": "attributesToGet",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "List of one or more attributes to retrieve from the table. If not provided, then all attributes will be returned. Cannot be used with ProjectionExpression. Example: [\"attr1\",\"attr2\"]"
                         },
                         {
                             "name": "projectionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "String that identifies the attributes to retrieve from the table. Cannot be used with AttributesToGet. Example: \"attr1, attr2.nestedAttr\""
                         },
                         {
                             "name": "consistentRead",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the read consistency model. If set to true, the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads."
                         },
                         {
                             "name": "expressionAttributeNames",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Name substitution tokens for attribute names in an expression. Maps placeholder names to actual attribute names. Example: {\"#n\":\"name\",\"#t\":\"timestamp\"}"
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption to return. TOTAL returns consumption for table and indexes, INDEXES returns consumption for indexes, NONE returns nothing."
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -439,109 +497,127 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table to scan. Must be between 3 and 255 characters."
                         },
                         {
                             "name": "indexName",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "The name of a secondary index to scan. This can be any local secondary index or global secondary index on the table."
                         },
                         {
                             "name": "filterExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A string that contains conditions that DynamoDB applies after the scan operation, but before the data is returned. Items that do not satisfy the criteria are not returned. Example: \"#status = :val\""
                         },
                         {
                             "name": "scanFilter",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Legacy parameter for filtering. Use FilterExpression instead. Optional parameter"
                         },
                         {
                             "name": "conditionalOperator",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Logical operator to apply to the conditions in ScanFilter. Optional parameter"
                         },
                         {
                             "name": "projectionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "String that identifies one or more attributes to retrieve from the table. Optional parameter"
                         },
                         {
                             "name": "attributesToGet",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Legacy parameter for attribute selection. Use ProjectionExpression instead. Optional parameter"
                         },
                         {
                             "name": "select",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Attributes to be returned in the result. Optional parameter"
                         },
                         {
                             "name": "expressionAttributeNames",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "One or more substitution tokens for attribute names in an expression. Optional parameter"
                         },
                         {
                             "name": "expressionAttributeValues",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "One or more values that can be substituted in an expression. Optional parameter"
                         },
                         {
                             "name": "limit",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Maximum number of items to evaluate (not necessarily returned). Optional parameter"
                         },
                         {
                             "name": "exclusiveStartKey",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Primary key of the first item that this operation will evaluate. Optional parameter"
                         },
                         {
                             "name": "segment",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Individual segment to be scanned by an application worker (for parallel scan). Optional parameter"
                         },
                         {
                             "name": "totalSegments",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Total number of segments into which the scan operation will be divided. Optional parameter"
                         },
                         {
                             "name": "consistentRead",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the read consistency model during the scan. Optional parameter"
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -554,85 +630,99 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table containing the item to update. Must be between 3 and 255 characters."
                         },
                         {
                             "name": "key",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Primary key attribute values for the item to update. Must be a JSON object where keys are attribute names and values are attribute values in DynamoDB format. Example: {\"id\":{\"S\":\"123\"}}"
                         },
                         {
                             "name": "updateExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "An expression that defines one or more attributes to be updated, the action to be performed on them, and new values for them. Example: \"SET #name = :val1, #status = :val2\""
                         },
                         {
                             "name": "attributeUpdates",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Map of attribute names and their corresponding actions to perform. Cannot be used with UpdateExpression. Example: {\"attr1\":{\"Action\":\"PUT\",\"Value\":{\"S\":\"newValue\"}}}"
                         },
                         {
                             "name": "conditionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "A condition that must be satisfied for the operation to succeed. The update operation only succeeds if the condition evaluates to true. Example: \"attribute_exists(#status)\""
                         },
                         {
                             "name": "expected",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON map of attribute/condition pairs for conditional operations. Optional parameter"
                         },
                         {
                             "name": "conditionalOperator",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Logical operator to apply to conditions in the expected map. Optional parameter"
                         },
                         {
                             "name": "expressionAttributeNames",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON map for substitution tokens for attribute names. Format: {\"#name\":\"ActualAttributeName\"}. Optional parameter"
                         },
                         {
                             "name": "expressionAttributeValues",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON map for substitution values in expressions. Format: {\":val\":{\"S\":\"value\"}}. Optional parameter"
                         },
                         {
                             "name": "returnValues",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Use to get item attributes as they appeared before/after the update. Optional parameter"
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
                         },
                         {
                             "name": "returnItemCollectionMetrics",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines whether item collection metrics are returned. Optional parameter"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -645,19 +735,22 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table to delete (minimum length: 3, maximum length: 255)"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -670,55 +763,64 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table to create. Must be between 3 and 255 characters and unique for your AWS account in the current region."
                         },
                         {
                             "name": "attributeDefinitions",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Array of attributes that describe the key schema for the table and indexes. Each element describes one attribute. Example: [{\"AttributeName\":\"id\",\"AttributeType\":\"S\"},{\"AttributeName\":\"timestamp\",\"AttributeType\":\"N\"}]"
                         },
                         {
                             "name": "keySchema",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Specifies the attributes that make up the primary key for the table. Must include one HASH (partition key) and optionally one RANGE (sort key). Example: [{\"AttributeName\":\"id\",\"KeyType\":\"HASH\"},{\"AttributeName\":\"timestamp\",\"KeyType\":\"RANGE\"}]"
                         },
                         {
                             "name": "provisionedThroughput",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The provisioned throughput settings for the table. Defines the maximum number of reads and writes per second. Example: {\"ReadCapacityUnits\":5,\"WriteCapacityUnits\":5}"
                         },
                         {
                             "name": "localSecondaryIndexes",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON array of local secondary indexes (maximum: 5). Optional parameter"
                         },
                         {
                             "name": "globalSecondaryIndexes",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON array of global secondary indexes (maximum: 5). Optional parameter"
                         },
                         {
                             "name": "StreamSpecification",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Settings for DynamoDB Streams on the table. Optional parameter"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -731,115 +833,134 @@
                         {
                             "name": "tableName",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The name of the table containing the requested items. Must be between 3 and 255 characters."
                         },
                         {
                             "name": "indexName",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "The name of a secondary index to query. This can be a global secondary index (GSI) or a local secondary index (LSI)."
                         },
                         {
                             "name": "keyConditionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Condition that specifies the key values for items to be retrieved. Must specify the partition key value and can optionally specify the sort key value. Example: \"id = :id AND #timestamp > :start\""
                         },
                         {
                             "name": "keyConditions",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Legacy parameter for key conditions. Use KeyConditionExpression instead. Optional parameter"
                         },
                         {
                             "name": "filterExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "String that contains conditions that DynamoDB applies after the Query operation. Optional parameter"
                         },
                         {
                             "name": "queryFilter",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Legacy parameter for filtering. Use FilterExpression instead. Optional parameter"
                         },
                         {
                             "name": "conditionalOperator",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Logical operator to apply to the conditions in QueryFilter. Optional parameter"
                         },
                         {
                             "name": "projectionExpression",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "String that identifies attributes to retrieve. Optional parameter"
                         },
                         {
                             "name": "attributesToGet",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Legacy parameter for attributes to get. Use ProjectionExpression instead. Optional parameter"
                         },
                         {
                             "name": "select",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Attributes to be returned in the result. Optional parameter"
                         },
                         {
                             "name": "limit",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Maximum number of items to evaluate (not necessarily returned). Optional parameter"
                         },
                         {
                             "name": "exclusiveStartKey",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Primary key of the first item that this operation will evaluate. Optional parameter"
                         },
                         {
                             "name": "scanIndexForward",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Specifies the order for index traversal. Optional parameter"
                         },
                         {
                             "name": "consistentRead",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the read consistency model. Optional parameter"
                         },
                         {
                             "name": "expressionAttributeNames",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON map for substitution tokens for attribute names. Format: {\"#name\":\"ActualAttributeName\"}. Optional parameter"
                         },
                         {
                             "name": "expressionAttributeValues",
                             "type": "stringOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "JSON map for substitution values in expressions. Format: {\":val\":{\"S\":\"value\"}}. Optional parameter"
                         },
                         {
                             "name": "returnConsumedCapacity",
                             "type": "comboOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "",
                             "description": "Determines the level of detail about provisioned throughput consumption. Optional parameter"
                         },
                         {
                             "name": "responseVariable",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "Name of the variable to which the output of the operation should be assigned"
                         },
                         {
                             "name": "overwriteBody",
                             "type": "checkbox",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
                         }
                     ],
@@ -854,31 +975,36 @@
                         {
                             "name": "connectionName",
                             "type": "string",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "DYNAMODB_CONNECTION_1",
                             "description": "The name for the DynamoDB connection"
                         },
                         {
                             "name": "region",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The AWS region where your DynamoDB resources are located. Example: us-east-1, us-west-2, eu-west-1"
                         },
                         {
                             "name": "accessKeyId",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The AWS access key ID that corresponds to the secret access key. Used to sign requests to AWS services."
                         },
                         {
                             "name": "secretAccessKey",
                             "type": "stringOrExpression",
-                            "required": "true",
+                            "required": true,
+                            "defaultValue": "",
                             "description": "The AWS secret access key associated with your AWS account. Keep this secure and never share it publicly."
                         },
                         {
                             "name": "blocking",
                             "type": "booleanOrExpression",
-                            "required": "false",
+                            "required": false,
+                            "defaultValue": "false",
                             "description": "Whether to perform blocking invocations to Amazon DynamoDB. When true, the operation waits for a response before proceeding."
                         }
                     ]
